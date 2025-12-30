@@ -1,0 +1,33 @@
+# Compiled objects
+*.o
+*.a
+obj/
+obj_bonus/
+
+# Executables
+so_long
+so_long_bonus
+
+# Libraries (will be cloned)
+libft/
+minilibx/
+minilibx-linux/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Debug files
+*.dSYM/
+vgcore.*
+valgrind-out.txt
+
+# IDE
+.vscode/
+.idea/
+
+# Testing
+test
+a.out
