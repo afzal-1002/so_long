@@ -15,12 +15,12 @@ NAME_BONUS	= so_long_bonus
 
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -g
-INCLUDES	= -I./includes -I./libft -I./minilibx
+INCLUDES	= -I./includes -I./libft -I./minilibx-linux
 
 # Libraries
 LIBFT		= ./libft/libft.a
-MLX			= ./minilibx/libmlx.a
-MLX_FLAGS	= -L./minilibx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
+MLX			= ./minilibx-linux/libmlx.a
+MLX_FLAGS	= -L./minilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 # Source files
 SRC_DIR		= src/
@@ -99,14 +99,14 @@ $(LIBFT):
 
 $(MLX):
 	@echo "$(YELLOW)Building minilibx...$(RESET)"
-	@make -C ./minilibx
+	@make -C ./minilibx-linux
 	@echo "$(GREEN)✓ minilibx built!$(RESET)"
 
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
 	@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
 	@make -C ./libft clean
-	@make -C ./minilibx clean
+	@make -C ./minilibx-linux clean
 	@echo "$(GREEN)✓ Clean complete!$(RESET)"
 
 fclean: clean
