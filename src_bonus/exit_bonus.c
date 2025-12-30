@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 00:00:00 by your_login       ###   ########.fr       */
+/*   Updated: 2025/12/30 23:23:52 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->wall.img);
 	if (game->floor.img)
 		mlx_destroy_image(game->mlx, game->floor.img);
-	if (game->exit.img)
-		mlx_destroy_image(game->mlx, game->exit.img);
+	if (game->exit_closed.img)
+		mlx_destroy_image(game->mlx, game->exit_closed.img);
+	if (game->exit_open.img)
+		mlx_destroy_image(game->mlx, game->exit_open.img);
 	if (game->enemy_img.img)
 		mlx_destroy_image(game->mlx, game->enemy_img.img);
 	i = 0;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 00:00:00 by your_login       ###   ########.fr       */
+/*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
+/*   Updated: 2025/12/30 22:52:15 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-int	init_game(t_game *game, char *map_file)
+static int	init_map_data(t_game *game, char *map_file)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->map.exit_x = -1;
@@ -28,6 +28,11 @@ int	init_game(t_game *game, char *map_file)
 		game->map.grid = NULL;
 		return (0);
 	}
+	return (1);
+}
+
+static int	init_graphics(t_game *game)
+{
 	if (!init_mlx(game))
 	{
 		free_map(game->map.grid);
@@ -40,6 +45,15 @@ int	init_game(t_game *game, char *map_file)
 		game->map.grid = NULL;
 		return (0);
 	}
+	return (1);
+}
+
+int	init_game(t_game *game, char *map_file)
+{
+	if (!init_map_data(game, map_file))
+		return (0);
+	if (!init_graphics(game))
+		return (0);
 	game->frame_count = 0;
 	game->current_frame = 0;
 	return (1);
@@ -55,70 +69,9 @@ int	init_mlx(t_game *game)
 		return (0);
 	win_width = game->map.width * TILE_SIZE;
 	win_height = game->map.height * TILE_SIZE;
-	game->win = mlx_new_window(game->mlx, win_width,
-			win_height, "so_long_bonus");
+	game->win = mlx_new_window(game->mlx, win_width, win_height,
+			"so_long_bonus");
 	if (!game->win)
-		return (0);
-	return (1);
-}
-
-static int	load_player_textures(t_game *game)
-{
-	game->player_img[0].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_0.xpm",
-			&game->player_img[0].width, &game->player_img[0].height);
-	game->player_img[1].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_1.xpm",
-			&game->player_img[1].width, &game->player_img[1].height);
-	game->player_img[2].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_2.xpm",
-			&game->player_img[2].width, &game->player_img[2].height);
-	game->player_img[3].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_3.xpm",
-			&game->player_img[3].width, &game->player_img[3].height);
-	if (!game->player_img[0].img || !game->player_img[1].img
-		|| !game->player_img[2].img || !game->player_img[3].img)
-		return (0);
-	return (1);
-}
-
-static int	load_collectible_textures(t_game *game)
-{
-	game->collectible[0].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible_0.xpm",
-			&game->collectible[0].width, &game->collectible[0].height);
-	game->collectible[1].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible_1.xpm",
-			&game->collectible[1].width, &game->collectible[1].height);
-	game->collectible[2].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible_2.xpm",
-			&game->collectible[2].width, &game->collectible[2].height);
-	game->collectible[3].img = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible_3.xpm",
-			&game->collectible[3].width, &game->collectible[3].height);
-	if (!game->collectible[0].img || !game->collectible[1].img
-		|| !game->collectible[2].img || !game->collectible[3].img)
-		return (0);
-	return (1);
-}
-
-int	load_textures(t_game *game)
-{
-	game->wall.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/wall.xpm", &game->wall.width, &game->wall.height);
-	game->floor.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/floor.xpm", &game->floor.width, &game->floor.height);
-	game->exit.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit.xpm", &game->exit.width, &game->exit.height);
-	game->enemy_img.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/enemy.xpm",
-			&game->enemy_img.width, &game->enemy_img.height);
-	if (!game->wall.img || !game->floor.img
-		|| !game->exit.img || !game->enemy_img.img)
-		return (0);
-	if (!load_player_textures(game))
-		return (0);
-	if (!load_collectible_textures(game))
 		return (0);
 	return (1);
 }

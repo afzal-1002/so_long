@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 21:21:10 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/31 00:42:33 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define TILE_SIZE 64
+# define TILE_SIZE 50
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
@@ -30,7 +30,7 @@
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
 # define ANIM_FRAMES 4
-# define ENEMY_SPEED 2000
+# define ENEMY_SPEED 50000
 
 typedef struct s_img
 {
@@ -76,7 +76,8 @@ typedef struct s_game
 	t_img			wall;
 	t_img			floor;
 	t_img			collectible[ANIM_FRAMES];
-	t_img			exit;
+	t_img			exit_closed;
+	t_img			exit_open;
 	t_img			player_img[ANIM_FRAMES];
 	t_img			enemy_img;
 	int				frame_count;

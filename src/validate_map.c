@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 00:00:00 by your_login       ###   ########.fr       */
+/*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
+/*   Updated: 2025/12/30 22:51:28 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,19 @@ int	check_walls(t_game *game)
 	return (1);
 }
 
+static int	count_element(char c, int *player, int *exit, t_game *game)
+{
+	if (c == 'P')
+		(*player)++;
+	else if (c == 'E')
+		(*exit)++;
+	else if (c == 'C')
+		game->map.collectibles++;
+	else if (c != '0' && c != '1')
+		return (0);
+	return (1);
+}
+
 int	check_elements(t_game *game)
 {
 	int	i;
@@ -92,14 +105,7 @@ int	check_elements(t_game *game)
 		j = -1;
 		while (++j < game->map.width)
 		{
-			if (game->map.grid[i][j] == 'P')
-				player++;
-			else if (game->map.grid[i][j] == 'E')
-				exit++;
-			else if (game->map.grid[i][j] == 'C')
-				game->map.collectibles++;
-			else if (game->map.grid[i][j] != '0'
-				&& game->map.grid[i][j] != '1')
+			if (!count_element(game->map.grid[i][j], &player, &exit, game))
 				return (0);
 		}
 	}

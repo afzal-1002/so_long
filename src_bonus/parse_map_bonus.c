@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 00:00:00 by your_login       ###   ########.fr       */
+/*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
+/*   Updated: 2025/12/30 22:52:15 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-static char	*read_file(int fd)
+static char	*read_file_content(int fd)
 {
 	char	*line;
 	char	*temp;
@@ -32,26 +32,10 @@ static char	*read_file(int fd)
 	return (content);
 }
 
-char	**parse_map(char *filename, t_game *game)
+static char	**process_content(char *content, t_game *game)
 {
-	int		fd;
-	char	*content;
 	char	**map;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_putstr_fd("Error\nCannot open map file\n", 2);
-		return (NULL);
-	}
-	content = read_file(fd);
-	close(fd);
-	if (!content || !*content)
-	{
-		ft_putstr_fd("Error\nEmpty map file\n", 2);
-		free(content);
-		return (NULL);
-	}
 	map = ft_split(content, '\n');
 	free(content);
 	if (!map)
@@ -61,4 +45,26 @@ char	**parse_map(char *filename, t_game *game)
 		game->map.height++;
 	game->map.width = ft_strlen(map[0]);
 	return (map);
+}
+
+char	**parse_map(char *filename, t_game *game)
+{
+	int		fd;
+	char	*content;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putstr_fd("Error\nCannot open map file\n", 2);
+		return (NULL);
+	}
+	content = read_file_content(fd);
+	close(fd);
+	if (!content || !*content)
+	{
+		ft_putstr_fd("Error\nEmpty map file\n", 2);
+		free(content);
+		return (NULL);
+	}
+	return (process_content(content, game));
 }

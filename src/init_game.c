@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 21:08:14 by mafzal           ###   ########.fr       */
+/*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
+/*   Updated: 2025/12/30 23:26:18 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	init_game(t_game *game, char *map_file)
+static int	init_map_data(t_game *game, char *map_file)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->map.exit_x = -1;
@@ -28,16 +28,21 @@ int	init_game(t_game *game, char *map_file)
 		game->map.grid = NULL;
 		return (0);
 	}
+	return (1);
+}
+
+int	init_game(t_game *game, char *map_file)
+{
+	if (!init_map_data(game, map_file))
+		return (0);
 	if (!init_mlx(game))
 	{
-		ft_putstr_fd("Error\nFailed to initialize MLX\n", 2);
 		free_map(game->map.grid);
 		game->map.grid = NULL;
 		return (0);
 	}
 	if (!load_textures(game))
 	{
-		ft_putstr_fd("Error\nFailed to load textures\n", 2);
 		free_map(game->map.grid);
 		game->map.grid = NULL;
 		return (0);
@@ -58,32 +63,5 @@ int	init_mlx(t_game *game)
 	game->win = mlx_new_window(game->mlx, win_width, win_height, "so_long");
 	if (!game->win)
 		return (0);
-	return (1);
-}
-
-int	load_textures(t_game *game)
-{
-	game->wall.img = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm",
-			&game->wall.width, &game->wall.height);
-	if (!game->wall.img)
-		return (ft_putstr_fd("wall failed\n", 2), 0);
-	game->floor.img = mlx_xpm_file_to_image(game->mlx, "textures/floor.xpm",
-			&game->floor.width, &game->floor.height);
-	if (!game->floor.img)
-		return (ft_putstr_fd("floor failed\n", 2), 0);
-	game->collectible.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible.xpm", &game->collectible.width,
-			&game->collectible.height);
-	if (!game->collectible.img)
-		return (ft_putstr_fd("collectible failed\n", 2), 0);
-	game->exit.img = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm",
-			&game->exit.width, &game->exit.height);
-	if (!game->exit.img)
-		return (ft_putstr_fd("exit failed\n", 2), 0);
-	game->player_img.img = mlx_xpm_file_to_image(game->mlx,
-			"textures/player.xpm", &game->player_img.width,
-			&game->player_img.height);
-	if (!game->player_img.img)
-		return (ft_putstr_fd("player failed\n", 2), 0);
 	return (1);
 }
