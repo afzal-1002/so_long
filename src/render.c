@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 23:23:02 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/31 01:27:50 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
+}
+
+int	expose_handler(t_game *game)
+{
+	render_map(game);
+	return (0);
 }

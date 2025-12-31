@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/31 00:32:06 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/31 01:28:09 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int				load_textures(t_game *game);
 void			render_map(t_game *game);
 void			render_tile(t_game *game, int x, int y);
 void			put_image(t_game *game, t_img img, int x, int y);
+int				expose_handler(t_game *game);
 
 /* Player Movement */
 int				key_press(int keycode, t_game *game);
