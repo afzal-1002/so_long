@@ -1,17 +1,7 @@
 # Compiled objects
 *.o
 *.a
-obj/
-obj_bonus/
 
-# Executables
-so_long
-so_long_bonus
-
-# Libraries (will be cloned)
-libft/
-minilibx/
-minilibx-linux/
 
 # Temporary files
 *.swp
