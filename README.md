@@ -48,7 +48,7 @@ make re
 
 ---
 
-## 📋 What's Included
+##  What's Included
 
 ### Source Files (src/)
 - ✅ `main.c` - Entry point and initialization
@@ -174,8 +174,7 @@ cd minilibx-linux && make && cd ..
 
 ---
 
-## 📦 Project Structure
-
+##  Project Structure
 ```
 so_long/
 ├── includes/
@@ -217,7 +216,7 @@ so_long/
 
 ---
 
-## 🏆 Evaluation
+## Evaluation
 
 1. **Norminette**: Run before every commit
 2. **Memory Leaks**: Test with valgrind on all maps
@@ -227,7 +226,7 @@ so_long/
 
 ---
 
-## 📚 Resources
+##  Resources
 
 - [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
 - [42 Docs - so_long](https://harm-smits.github.io/42docs/projects/so_long)
@@ -235,7 +234,7 @@ so_long/
 
 ---
 
-## 👤 Author
+## Author
 
 **Muhammad Afzal**
 Made with ❤️ for 42 School

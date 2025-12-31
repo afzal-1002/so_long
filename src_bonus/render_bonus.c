@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/31 01:29:55 by mafzal           ###   ########.fr       */
+/*   Updated: 2025/12/31 01:36:24 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ void	render_tile(t_game *game, int x, int y)
 void	render_move_counter(t_game *game)
 {
 	char	*moves_str;
-	char	*temp;
+	char	*num_str;
 
-	moves_str = ft_strjoin("Moves: ", ft_itoa(game->player.moves));
-	temp = moves_str;
+	num_str = ft_itoa(game->player.moves);
+	moves_str = ft_strjoin("Moves: ", num_str);
+	free(num_str);
 	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, moves_str);
-	free(temp);
+	free(moves_str);
 }
 
 void	render_map(t_game *game)
