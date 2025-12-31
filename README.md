@@ -166,9 +166,7 @@ so_long/
 ✅ Separate bonus executable  
 
 ## Author
-
+MUhammad Afzal
 Made with ❤️ for 42 School
 
-## License
 
-This project is part of the 42 School curriculum.
