@@ -6,13 +6,13 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/31 01:05:03 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:01:23 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-static int	load_player_textures(t_game *game)
+int	load_player_textures(t_game *game)
 {
 	game->player_img[0].img = mlx_xpm_file_to_image(game->mlx,
 			"Resources/right-1-40.xpm", &game->player_img[0].width,
@@ -32,7 +32,7 @@ static int	load_player_textures(t_game *game)
 	return (1);
 }
 
-static int	load_collectible_textures(t_game *game)
+int	load_collectible_textures(t_game *game)
 {
 	game->collectible[0].img = mlx_xpm_file_to_image(game->mlx,
 			"Resources/Estrellita.xpm", &game->collectible[0].width,
@@ -52,7 +52,7 @@ static int	load_collectible_textures(t_game *game)
 	return (1);
 }
 
-static int	load_exit_textures(t_game *game)
+int	load_exit_textures(t_game *game)
 {
 	game->exit_closed.img = mlx_xpm_file_to_image(game->mlx,
 			"Resources/door.xpm", &game->exit_closed.width,

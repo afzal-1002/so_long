@@ -6,13 +6,13 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/31 01:04:18 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 20:48:28 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	load_basic_textures(t_game *game)
+int	load_basic_textures(t_game *game)
 {
 	game->wall.img = mlx_xpm_file_to_image(game->mlx, "Resources/wall.xpm",
 			&game->wall.width, &game->wall.height);
@@ -30,7 +30,7 @@ static int	load_basic_textures(t_game *game)
 	return (1);
 }
 
-static int	load_exit_textures(t_game *game)
+int	load_exit_textures(t_game *game)
 {
 	game->exit_closed.img = mlx_xpm_file_to_image(game->mlx,
 			"Resources/door.xpm", &game->exit_closed.width,

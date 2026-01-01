@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/31 01:36:24 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:00:12 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_image(t_game *game, t_img img, int x, int y)
 		* TILE_SIZE);
 }
 
-static void	render_enemies(t_game *game)
+void	render_enemies(t_game *game)
 {
 	t_enemy	*current;
 

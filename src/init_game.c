@@ -6,13 +6,13 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/30 23:26:18 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 20:49:39 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	init_map_data(t_game *game, char *map_file)
+int	init_map_data(t_game *game, char *map_file)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->map.exit_x = -1;

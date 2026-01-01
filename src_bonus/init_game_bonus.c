@@ -6,13 +6,13 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/30 22:52:15 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 20:57:30 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-static int	init_map_data(t_game *game, char *map_file)
+int	init_map_data(t_game *game, char *map_file)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->map.exit_x = -1;
@@ -31,7 +31,7 @@ static int	init_map_data(t_game *game, char *map_file)
 	return (1);
 }
 
-static int	init_graphics(t_game *game)
+int	init_graphics(t_game *game)
 {
 	if (!init_mlx(game))
 	{

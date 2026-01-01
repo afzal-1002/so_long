@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/31 01:28:09 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:06:00 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,17 @@ typedef struct s_game
 
 /* Map Parsing */
 char			**parse_map(char *filename, t_game *game);
+char			*read_file_content(int fd);
+char			**process_content(char *content, t_game *game);
 int				validate_map(t_game *game);
 int				check_rectangular(t_game *game);
 int				check_walls(t_game *game);
 int				check_elements(t_game *game);
 int				check_path(t_game *game);
+
+/* Pathfinding */
+void			flood_fill(char **map, int x, int y, t_game *game);
+char			**copy_map(t_game *game);
 
 /* Map Utils */
 int				get_map_width(char *line);
@@ -83,11 +89,13 @@ int				get_map_height(char *filename);
 int				count_lines(char *filename);
 void			find_player(t_game *game);
 void			count_collectibles(t_game *game);
+int				count_element(char c, int *player, int *exit, t_game *game);
 
 /* Game Init */
 int				init_game(t_game *game, char *map_file);
 int				init_mlx(t_game *game);
 int				load_textures(t_game *game);
+int				init_map_data(t_game *game, char *map_file);
 
 /* Rendering */
 void			render_map(t_game *game);
@@ -109,5 +117,10 @@ void			exit_error(char *message, t_game *game);
 /* Utils */
 void			print_moves(int moves);
 int				is_ber_file(char *filename);
+
+/* Textures */
+int				load_basic_textures(t_game *game);
+int				load_exit_textures(t_game *game);
+int				load_textures(t_game *game);
 
 #endif

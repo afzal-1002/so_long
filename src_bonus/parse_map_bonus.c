@@ -6,13 +6,13 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/30 22:52:15 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:01:01 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-static char	*read_file_content(int fd)
+char	*read_file_content(int fd)
 {
 	char	*line;
 	char	*temp;
@@ -32,7 +32,7 @@ static char	*read_file_content(int fd)
 	return (content);
 }
 
-static char	**process_content(char *content, t_game *game)
+char	**process_content(char *content, t_game *game)
 {
 	char	**map;
 

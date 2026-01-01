@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/31 01:28:54 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:11:09 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,13 @@ int					get_map_height(char *filename);
 int					count_lines(char *filename);
 void				find_player(t_game *game);
 void				count_collectibles(t_game *game);
+void				flood_fill(char **map, int x, int y, t_game *game);
+char				**copy_map(t_game *game);
 
 /* Game Init */
 int					init_game(t_game *game, char *map_file);
+int					init_map_data(t_game *game, char *map_file);
+int					init_graphics(t_game *game);
 int					init_mlx(t_game *game);
 int					load_textures(t_game *game);
 void				init_enemies(t_game *game);
@@ -123,9 +127,15 @@ void				add_enemy(t_game *game, int x, int y);
 void				move_enemies(t_game *game);
 int					check_enemy_collision(t_game *game);
 void				free_enemies(t_enemy *enemies);
+void				move_enemy(t_game *game, t_enemy *enemy);
 
 /* Animation */
 int					update_animation(t_game *game);
+
+/* Parse Map */
+char				**process_content(char *content, t_game *game);
+char				*read_file_content(int fd);
+char				**parse_map(char *filename, t_game *game);
 
 /* Game Exit */
 int					close_game(t_game *game);
@@ -136,5 +146,17 @@ void				exit_error(char *message, t_game *game);
 /* Utils */
 void				print_moves(int moves);
 int					is_ber_file(char *filename);
+
+/* Textures */
+int					load_player_textures(t_game *game);
+int					load_collectible_textures(t_game *game);
+int					load_exit_textures(t_game *game);
+int					load_textures(t_game *game);
+
+/* Rendering */
+void				render_enemies(t_game *game);
+
+/*Validate Map*/
+int					count_element(char c, int *player, int *exit, t_game *game);
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_path.c                                       :+:      :+:    :+:   */
+/*   check_path_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/12/30 00:00:00 by your_login       ###   ########.fr       */
+/*   Updated: 2026/01/01 20:55:44 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-static void	flood_fill(char **map, int x, int y, t_game *game)
+void	flood_fill(char **map, int x, int y, t_game *game)
 {
 	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
 		return ;
@@ -32,7 +32,7 @@ static void	flood_fill(char **map, int x, int y, t_game *game)
 	flood_fill(map, x, y - 1, game);
 }
 
-static char	**copy_map(t_game *game)
+char	**copy_map(t_game *game)
 {
 	char	**copy;
 	int		i;

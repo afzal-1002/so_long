@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/30 22:52:15 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 21:04:32 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_walls(t_game *game)
 	return (1);
 }
 
-static int	count_element(char c, int *player, int *exit, t_game *game)
+int	count_element(char c, int *player, int *exit, t_game *game)
 {
 	if (c == 'P')
 		(*player)++;

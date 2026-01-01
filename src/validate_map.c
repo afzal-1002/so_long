@@ -6,7 +6,7 @@
 /*   By: mafzal < mafzal@student.42warsaw.pl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 00:00:00 by mafzal            #+#    #+#             */
-/*   Updated: 2025/12/30 22:51:28 by mafzal           ###   ########.fr       */
+/*   Updated: 2026/01/01 20:46:30 by mafzal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,23 @@ int	check_walls(t_game *game)
 	i = 0;
 	while (i < game->map.width)
 	{
-		if (game->map.grid[0][i] != '1'
-			|| game->map.grid[game->map.height - 1][i] != '1')
+		if (game->map.grid[0][i] != '1' || game->map.grid[game->map.height
+			- 1][i] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
 	while (i < game->map.height)
 	{
-		if (game->map.grid[i][0] != '1'
-			|| game->map.grid[i][game->map.width - 1] != '1')
+		if (game->map.grid[i][0] != '1' || game->map.grid[i][game->map.width
+			- 1] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-static int	count_element(char c, int *player, int *exit, t_game *game)
+int	count_element(char c, int *player, int *exit, t_game *game)
 {
 	if (c == 'P')
 		(*player)++;
